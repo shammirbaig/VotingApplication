@@ -15,6 +15,9 @@ const Home = () => {
   const [userResponse, setUserResponse] = useState(null);
 
   localStorage.setItem("token", token);
+  
+  
+  //GET THE USERRESPONSE FROM LR API AND SAVE IT IN THE LOCALSTORAGE
   useEffect(()=>{
 
 
@@ -82,7 +85,8 @@ const Home = () => {
   const userId = JSON.parse(localStorage.getItem("user"))
     ? JSON.parse(localStorage.getItem("user")).Uid
     : null;
-
+  
+//TRAVERSE THE POSTS TO FIND THE POST WHICH WE HAVE VOTED FOR SO THAT WE CAN PASS THAT POST ID INTO REMOVE VOTE FUNCTION
   for (var key in data) {
     for (var key1 in data[key]) {
       for (var key2 in data[key][key1]) {
@@ -139,6 +143,8 @@ const Home = () => {
     });
   };
 
+  
+  //FUNCTION TO VOTE FOR A PERSON
   const votePlayer = (id, userId) => {
     swal({
       title: "Are you sure?",
@@ -189,10 +195,12 @@ const Home = () => {
     isVote = JSON.parse(localStorage.getItem("user")).Uid;
   }
 
+  // CREATES AN ARRAY OF ARRAY OF USERS ,SO THAT WE CAN CHECK IF THE LOGGED IN USER HAS VOTED BEFORE ,IF ALREADY VOTED WE CAN DISABLE VOTE BUTTON
   const userIdExist = data.map((item) => item.votes.filter((item) => item));
 
   let userVotedBefore = false;
 
+  // TRAVERSE THE ARRAY OF ARRAY OF VOTES
   //   console.log(userIdExist);
   for (let key of userIdExist) {
     if (key.length > 0) {
