@@ -19,31 +19,18 @@ import Profile from "./components/Profile";
 export const UserContext = createContext();
 
 const Routing = () => {
-  // const history = useHistory();
-  // const { state, dispatch } = useContext(UserContext);
-  // useEffect(() => {
-  //   const user = JSON.parse(localStorage.getItem("user"));
-  //   if (user) {
-  //     dispatch({ type: "USER", payload: user });
-  //   }
-  //   else {
-  //     history.push("/login");
-  //   }
-  // }, []);
+
   return (
     <Switch>
       <Route exact path="/">
         <LandingPage />
       </Route>
       <Route path="/logout">
-        <div>
+        
           <Logout />
-        </div>
+        
       </Route>
-      {/* <Route path="/login">
-       <Login />
-  </Route>*/}
-
+     
       <Route path="/home">
         <Home />
       </Route>
@@ -58,13 +45,13 @@ const Routing = () => {
 };
 
 function App() {
-  // const [state, dispatch] = useReducer(reducer, initialState);
+  
   return (
-    // <UserContext.Provider value={{ state, dispatch }}>
+    
     <Router>
       <Routing />
     </Router>
-    // </UserContext.Provider>
+    
   );
 }
 
